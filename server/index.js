@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 app.use("/auth", AuthRoute);
 
+// mongoDB connect
 const connectDB = async () => {
   try {
     const connect = await mongoose.connect(process.env.MONGODB_URL);
@@ -23,6 +24,8 @@ const connectDB = async () => {
     console.log("connection error", error);
   }
 };
+
+
 // listen server
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
